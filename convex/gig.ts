@@ -264,3 +264,104 @@ export const update = mutation({
     return gig;
   },
 });
+
+export const favorite = mutation({
+  args: { id: v.id("gigs") },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    const gig = await ctx.db.get(args.id);
+
+    if (!gig) {
+      throw new Error("Board not found");
+    }
+
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_token", (q) =>
+        q.eq("tokenIdentifier", identity.tokenIdentifier)
+      )
+      .unique();
+
+    if (user === null) {
+      return;
+    }
+
+    const userId = user._id;
+
+    const existingFavorite = await ctx.db
+      .query("userFavorites")
+      .withIndex("by_user_gig", (q) =>
+        q.eq("userId", userId).eq("gigId", gig._id)
+      )
+      .unique();
+
+    if (existingFavorite) {
+      throw new Error("Board already favorited");
+    }
+
+    await ctx.db.insert("userFavorites", {
+      userId,
+      gigId: gig._id,
+    });
+
+    return gig;
+  },
+});
+
+export const unfavorite = mutation({
+  args: { id: v.id("gigs") },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    const gig = await ctx.db.get(args.id);
+
+    if (!gig) {
+      throw new Error("Board not found");
+    }
+
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_token", (q) =>
+        q.eq("tokenIdentifier", identity.tokenIdentifier)
+      )
+      .unique();
+
+    if (user === null) {
+      return;
+    }
+
+    const userId = user._id;
+
+    const existingFavorite = await ctx.db
+      .query("userFavorites")
+      .withIndex("by_user_gig", (q) =>
+        q.eq("userId", userId).eq("gigId", gig._id)
+      )
+      .unique();
+
+    if (!existingFavorite) {
+      throw new Error("Favorited gig not found");
+    }
+
+    await ctx.db.delete(existingFavorite._id);
+
+    return gig;
+  },
+});
+
+export const getSeller = query({
+  args: { id: v.id("users") },
+  handler: async (ctx, args) => {
+    const seller = ctx.db.get(args.id);
+    return seller;
+  },
+});

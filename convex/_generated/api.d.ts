@@ -21,6 +21,7 @@ import type * as gigMedia from "../gigMedia.js";
 import type * as offers from "../offers.js";
 import type * as seedCategories from "../seedCategories.js";
 import type * as seedSubCategories from "../seedSubCategories.js";
+import type * as stripe from "../stripe.js";
 import type * as users from "../users.js";
 
 /**
@@ -38,6 +39,7 @@ declare const fullApi: ApiFromModules<{
   offers: typeof offers;
   seedCategories: typeof seedCategories;
   seedSubCategories: typeof seedSubCategories;
+  stripe: typeof stripe;
   users: typeof users;
 }>;
 export declare const api: FilterApi<
