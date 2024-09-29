@@ -3,6 +3,7 @@
 import { useMutation } from "convex/react";
 import { useEffect } from "react";
 import { api } from "../../convex/_generated/api";
+import { GigList } from "./_components/gig-list";
 
 interface DashboardProps {
   searchParams: {
@@ -19,8 +20,7 @@ const Dashboard = ({ searchParams }: DashboardProps) => {
     };
     usestore();
   }, [store]);
-  // return <GigList query = {searchParams} />
-  return <div>hi</div>;
+  return <GigList query={searchParams} />;
 };
 
 export default Dashboard;

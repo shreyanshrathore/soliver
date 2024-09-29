@@ -18,9 +18,12 @@ import type {
 import type * as categories from "../categories.js";
 import type * as gig from "../gig.js";
 import type * as gigMedia from "../gigMedia.js";
+import type * as gigs from "../gigs.js";
 import type * as offers from "../offers.js";
+import type * as reviews from "../reviews.js";
 import type * as seedCategories from "../seedCategories.js";
 import type * as seedSubCategories from "../seedSubCategories.js";
+import type * as skills from "../skills.js";
 import type * as stripe from "../stripe.js";
 import type * as users from "../users.js";
 
@@ -36,9 +39,12 @@ declare const fullApi: ApiFromModules<{
   categories: typeof categories;
   gig: typeof gig;
   gigMedia: typeof gigMedia;
+  gigs: typeof gigs;
   offers: typeof offers;
+  reviews: typeof reviews;
   seedCategories: typeof seedCategories;
   seedSubCategories: typeof seedSubCategories;
+  skills: typeof skills;
   stripe: typeof stripe;
   users: typeof users;
 }>;

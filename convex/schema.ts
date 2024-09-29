@@ -12,9 +12,9 @@ export default defineSchema({
     profileImageUrl: v.optional(v.string()),
     favouriteSellerIds: v.optional(v.array(v.string())),
     tokenIdentifier: v.string(),
-    customeTag: v.optional(v.string()),
+    customTag: v.optional(v.string()),
     stripeAccountId: v.optional(v.string()),
-    stripeAccountSetupComplete: v.optional(v.string()),
+    stripeAccountSetupComplete: v.optional(v.boolean()),
   })
     .index("by_token", ["tokenIdentifier"])
     .index("by_username", ["username"]),

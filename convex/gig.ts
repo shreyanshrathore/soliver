@@ -76,7 +76,7 @@ export const get = query({
     const sellerWithCountryAndLanguage = {
       ...seller,
       country: country,
-      language: languages,
+      languages: languages,
     };
 
     const gigWithSeller = {
@@ -363,5 +363,34 @@ export const getSeller = query({
   handler: async (ctx, args) => {
     const seller = ctx.db.get(args.id);
     return seller;
+  },
+});
+
+export const getCategoryAndSubcategory = query({
+  args: {
+    gigId: v.id("gigs"),
+  },
+  handler: async (ctx, args) => {
+    const gig = await ctx.db.get(args.gigId);
+
+    if (!gig) {
+      throw new Error("Gig not found");
+    }
+
+    const subcategory = await ctx.db.get(gig.subcategoryId);
+
+    if (!subcategory) {
+      throw new Error("Subcategory not found");
+    }
+
+    const category = await ctx.db.get(subcategory.categoryId);
+    if (!category) {
+      throw new Error("Category not found");
+    }
+
+    return {
+      category: category.name,
+      subcategory: subcategory.name,
+    };
   },
 });

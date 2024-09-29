@@ -9,7 +9,6 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-// import { TitleEditor } from "@/components/title-editor";
 import { Images } from "@/components/images";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -18,8 +17,6 @@ import { useApiMutation } from "@/hooks/use-api-mutation";
 import { Description } from "@/components/description";
 import { TitleEditor } from "@/components/title-editor";
 import { OffersEditor } from "./_components/offers-editor";
-// import { OffersEditor } from "./_components/offers-editor";
-// import { Description } from "@/components/description";
 
 interface EditdPageProps {
   params: {

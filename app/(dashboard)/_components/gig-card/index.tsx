@@ -14,6 +14,9 @@ import { useApiMutation } from "@/hooks/use-api-mutation";
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
 import { Doc, Id } from "@/convex/_generated/dataModel";
+import { Overlay } from "./overlay";
+import { Actions } from "@/components/actions";
+import { MoreHorizontal } from "lucide-react";
 
 interface GigCardProps {
   id: string;
@@ -73,18 +76,18 @@ export const GigCard = ({
         <div className="relative flex-1 bg-blue-50">
           <ConvexImage storageId={storageId} title={title} />
 
-          {/* <Overlay />
+          <Overlay />
 
           <Actions id={id} title={title} side="right">
             <button className="absolute top-1 right-1 opacity-25 group-hover:opacity-100 transition-opacity px-3 py-2 outline-none">
               <MoreHorizontal className="text-black opacity-75 hover:opacity-100 transition-opacity" />
             </button>
-          </Actions> */}
+          </Actions>
         </div>
         <Footer
           isFavorite={isFavorite}
           title={title}
-          ownerLabel={"Vuk"}
+          ownerLabel={seller.fullName}
           createdAtLabel={createdAtLabel}
           onClick={toggleFavorite}
           disabled={favoritePending || unfavoritePending}

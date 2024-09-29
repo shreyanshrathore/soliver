@@ -2,8 +2,8 @@
 
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
-// import { EmptySearch } from "./empty-search";
-// import { EmptyFavorites } from "./empty-favorites";
+import { EmptySearch } from "./empty-search";
+import { EmptyFavorites } from "./empty-favorites";
 import { GigCard } from "./gig-card";
 import { FullGigType } from "@/types";
 import { useEffect, useState } from "react";
@@ -40,12 +40,12 @@ export const GigList = ({ query }: GigListProps) => {
   }
 
   if (!gigs?.length && query.search) {
-    // return <EmptySearch />;
+    return <EmptySearch />;
     return null;
   }
 
   if (!gigsWithFavorite?.length && query.favorites) {
-    // return <EmptyFavorites />;
+    return <EmptyFavorites />;
     return null;
   }
 
