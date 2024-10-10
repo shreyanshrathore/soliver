@@ -34,6 +34,7 @@ export const Content = ({ offer, sellerId, editUrl }: OffersProps) => {
       });
       if (!url) throw new Error("Error: Stripe session error.");
       router.push(url);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast.error(error.message);
     }

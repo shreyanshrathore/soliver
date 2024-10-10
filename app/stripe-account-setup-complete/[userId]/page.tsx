@@ -27,6 +27,7 @@ const StripeAccountSetupComplete = ({
       try {
         await update({ userId: params.userId as Id<"users"> });
         router.push("/");
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         toast.error(`Error saving your stripe payment processing ${error}`, {
           duration: 10000,

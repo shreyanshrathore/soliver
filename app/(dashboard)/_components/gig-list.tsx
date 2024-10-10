@@ -17,7 +17,7 @@ interface GigListProps {
 }
 
 export const GigList = ({ query }: GigListProps) => {
-  const gigs: FullGigType[] | undefined = useQuery(api.gigs.get, {
+  const gigs: FullGigType[] | undefined | null = useQuery(api.gigs.get, {
     search: query.search,
     favorites: query.favorites,
     filter: query.filter,

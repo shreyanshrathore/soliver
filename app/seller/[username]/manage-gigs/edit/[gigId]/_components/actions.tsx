@@ -17,12 +17,7 @@ interface ActionsProps {
   storageId: string;
 }
 
-export const Actions = ({
-  children,
-  side,
-  sideOffset,
-  storageId,
-}: ActionsProps) => {
+export const Actions = ({ storageId }: ActionsProps) => {
   // const { onOpen } = useRenameModal();
   const { mutate, pending } = useApiMutation(api.gigMedia.remove);
 

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useAuth } from "@clerk/nextjs";
 import { formatDistanceToNow } from "date-fns";
 // import { Actions } from "@/components/actions";
 // import { MoreHorizontal } from "lucide-react";
@@ -34,14 +33,12 @@ export const GigCard = ({
   id,
   sellerId,
   title,
-  description,
   createdAt,
   isFavorite,
   storageId,
   offer,
   reviews,
 }: GigCardProps) => {
-  const { userId } = useAuth();
   const seller = useQuery(api.gig.getSeller, { id: sellerId as Id<"users"> });
   // const ownerLabel = userId === ownerId ? "You" : ownerName;
   const createdAtLabel = formatDistanceToNow(createdAt, { addSuffix: true });

@@ -51,6 +51,7 @@ export const Actions = ({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
       <DropdownMenuContent
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onClick={(e: any) => e.stopPropagation()}
         side={side}
         sideOffset={sideOffset}

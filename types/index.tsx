@@ -6,10 +6,10 @@ export type ImageWithUrlType = Doc<"gigMedia"> & {
 
 export type FullGigType = Doc<"gigs"> & {
   storageId?: Id<"_storage"> | undefined;
-  favorited: boolean;
-  offer: Doc<"offers">;
-  reviews: Doc<"reviews">[];
-  seller: Doc<"users">;
+  favorited?: boolean;
+  offer?: Doc<"offers">;
+  reviews?: Doc<"reviews">[];
+  seller?: Doc<"users">;
 };
 
 export type MessageWithUserType = Doc<"messages"> & {
